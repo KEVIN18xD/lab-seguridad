@@ -29,7 +29,8 @@ Estructura: `app/` (código de práctica), `reportes/` (salidas de herramientas)
 Reporte: `reportes/semgrep.json`
 
 ## 4. OWASP Dependency-Check (SCA)
-- Ejecución: imagen Docker `owasp/dependency-check:latest` con API key de NVD (417 611 registros CVE)
+- Versión: 13.0.0 (imagen Docker `owasp/dependency-check`)
+- Ejecución: con API key de NVD (417 611 registros CVE)
 - Resultado: **41 vulnerabilidades en 10 dependencias**
 
 | Dependencia | Vulnerabilidades |
@@ -49,6 +50,7 @@ Remediación: actualizar a versiones soportadas (`npm audit fix` / subir version
 Reportes: `reportes/dependency-check-report.html` y `.json`
 
 ## 5. OWASP ZAP (DAST)
+- Versión: ZAP 2.17.0 (imagen Docker `zaproxy/zap-stable`)
 - Objetivo: OWASP Juice Shop (contenedor `bkimminich/juice-shop`)
 - Comando: `zap-baseline.py -t http://juice:3000`
 - Resultado: **FAIL 0 · WARN 7 · PASS 61** (116 URL)
@@ -68,10 +70,12 @@ Reportes: `reportes/zap-report.html` y `.json`
 ## 6. Evidencias
 | Captura | Contenido |
 |---|---|
-| `evidencias/01-repo.png` | git status / remote |
-| `evidencias/02-docker.png` | docker --version + hello-world |
-| `evidencias/03-semgrep.png` | versión + 6 findings |
-| `evidencias/04-dependency-check.png` | Analysis Complete + reporte HTML |
-| `evidencias/05-zap.png` | resumen ZAP + Juice Shop |
+| `evidencias/01-repositorio-github.png` | Repositorio en GitHub con commits y README |
+| `evidencias/02-docker.png` | `docker --version`, hello-world e imágenes instaladas |
+| `evidencias/03-semgrep-a.png` | Semgrep: "6 Code Findings" y primeros hallazgos |
+| `evidencias/03-semgrep-b.png` | Semgrep: versión 1.183.0 y últimos hallazgos |
+| `evidencias/04-dependency-check-reporte.png` | Reporte HTML: 41 vulnerabilidades en 10 dependencias |
+| `evidencias/05-zap-reporte.png` | Reporte HTML de ZAP contra Juice Shop |
+| `evidencias/06-juice-shop-puerto.png` | Juice Shop en ejecución (puerto 3000) |
 
 > Nota de seguridad: la API key de NVD se usó solo como variable de entorno y no se guardó en el repositorio.
